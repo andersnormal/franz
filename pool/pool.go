@@ -1,8 +1,11 @@
 package pool
 
-import ()
+import (
+	"net"
+	"strings"
+)
 
-func New(opts ...Opt) Pool {
+func New(opts ...Opt) (Pool, error) {
 	options := &Opts{}
 
 	p := new(pool)
@@ -18,10 +21,19 @@ func New(opts ...Opt) Pool {
 		worker := newWorker(i, p.workersQueue, p.failed)
 		p.workers = append(p.workers, worker)
 
+		port := p.start + i
+		if port >= p.end {
+			return p, nil
+		}
+
+		if err := testListener(p.start + i); err != nil {
+			return nil, err
+		}
+
 		go worker.start()
 	}
 
-	return p
+	return p, nil
 }
 
 func (p *pool) Len() int {
@@ -51,6 +63,16 @@ func (p *pool) watch() {
 			go worker.start()
 		}
 	}
+}
+
+func testListener(port int) error {
+	l, err := net.Listen("tcp", strings.Join([]string{"localhost", string(port)}, ":"))
+	if err != nil {
+		return err
+	}
+	defer l.Close()
+
+	return nil
 }
 
 // // Queue is the interface to a queue itself

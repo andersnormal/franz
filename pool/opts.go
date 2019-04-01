@@ -19,5 +19,10 @@ func configure(p *pool, opts ...Opt) error {
 		o(p.opts)
 	}
 
+	p.size = p.opts.Size
+	p.buffer = p.opts.Buffer
+	p.end = p.opts.End
+	p.start = p.opts.Start
+
 	return nil
 }

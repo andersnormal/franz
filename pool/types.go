@@ -9,6 +9,9 @@ type Opt func(*Opts)
 type Opts struct {
 	Buffer int
 	Size   int
+
+	Start int
+	End   int
 }
 
 // Pool ...
@@ -24,6 +27,9 @@ type Pool interface {
 type pool struct {
 	buffer int
 	size   int
+
+	start int
+	end   int
 
 	work         workQueue
 	workersQueue workersQueue
