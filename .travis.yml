@@ -1,0 +1,28 @@
+language: go
+
+matrix:
+  include:
+  - go: 1.11.x
+  - go: 1.12.x
+    env: LATEST=true
+  - go: tip
+  allow_failures:
+  - go: tip
+
+addons:
+  apt:
+    packages:
+    - rpm
+
+script: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+services:
+  - docker
+
+deploy:
+- provider: script
+  skip_cleanup: true
+  script: curl -sL http://git.io/goreleaser | bash
+  on:
+    tags: true
+    condition: "$TRAVIS_OS_NAME = linux && $LATEST = true"

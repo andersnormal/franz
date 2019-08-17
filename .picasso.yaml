@@ -1,0 +1,8 @@
+version: 1
+author: Sebastian Döll <sebastian@andersnormal.us>
+project: franz
+tasks:
+  build/server:
+    desc: building the server
+    cmds:
+      - cd server && go build

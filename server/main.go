@@ -4,7 +4,7 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/andersnormal/franz/cmd"
+	"github.com/andersnormal/franz/server/cmd"
 )
 
 func init() {
