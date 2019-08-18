@@ -1,11 +1,8 @@
 package config
 
 import (
-	"os"
-	"path"
-	"path/filepath"
-	"strings"
 	"syscall"
+	"time"
 
 	log "github.com/sirupsen/logrus"
 )
@@ -80,6 +77,5 @@ func New() *Config {
 		StatusAddr:   DefaultStatusAddr,
 		Debug:        DefaultDebug,
 		Addr:         DefaultAddr,
-		GRPCAddr:     DefaultGRPCAddr,
 	}
 }

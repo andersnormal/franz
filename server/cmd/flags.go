@@ -15,7 +15,4 @@ func addFlags(cmd *cobra.Command, cfg *c.Config) {
 
 	// addr to listen on
 	cmd.Flags().StringVar(&cfg.Addr, "addr", c.DefaultAddr, "address to listen")
-
-	// grpc addr ...
-	cmd.Flags().StringVar(&cfg.GRPCAddr, "grpc-addr", c.DefaultGRPCAddr, "grpc listen address")
 }
