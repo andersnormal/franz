@@ -1,13 +1,11 @@
 module github.com/andersnormal/franz
 
-go 1.12
+go 1.13
 
 require (
-	github.com/andersnormal/pkg v0.0.0-20190818144443-8bd890dd8986
-	github.com/chromedp/cdproto v0.0.0-20190812224334-39ef923dcb8d
-	github.com/chromedp/chromedp v0.4.0
-	github.com/sirupsen/logrus v1.4.2
-	github.com/spf13/cobra v0.0.5
-	github.com/spf13/viper v1.4.0
-	golang.org/x/sync v0.0.0-20190423024810-112230192c58
+	github.com/aws/aws-lambda-go v1.13.2
+	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/kr/pretty v0.1.0 // indirect
+	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
+	gopkg.in/yaml.v2 v2.2.4 // indirect
 )
